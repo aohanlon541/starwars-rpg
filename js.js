@@ -1,51 +1,47 @@
+$(document).ready(function() {
+
 var chewbaccaPoints = 100;
 var soloPoints = 150;
 var vadarPoints = 300;
 var huttPoints = 75; 
-
-$("#chewbacca").click( function() {
-	$("#player").append($("#chewbacca"));
-	$("#player").append("<p>Health Point: " + chewbaccaPoints + "</p>");
-
-	$("#enemies").append($("#han-solo"));
-	$("#enemies").append("<p>Health Point: " + soloPoints + "</p>");
-
-	$("#enemies").append($("#vadar"));
-	$("#enemies").append("<p>Health Point: " + vadarPoints + "</p>");
-
-	$("#enemies").append($("#hutt"));
-	$("#enemies").append("<p>Health Point: " + huttPoints + "</p>");
-
-	$("#enemies").css({"display": "inline"});
-	$("#player").css({"display": "inline"});
-
-	}); 
+var clicks = 0;
 
 
-$("#han-solo").click( function() {
-	$("#player").append($("#han-solo"));
-	$("#enemies").append($("#chewbacca"));
-	$("#enemies").append($("#vadar"));
-	$("#enemies").append($("#hutt"));
-	$("#enemies").css({"display": "inline"});
-	$("#player").css({"display": "inline"});
-	}); 
+$('.individual').click(function selectCharacter(event) {
+	if (clicks === 0) {
+  		$(this).prepend("<h3>Selected Player</h3>");
+		$(this).css({"background-color": "green"})
+		$(".game").append(this);
 
-$("#vadar").click( function() {
-	$("#player").append($("#vadar"));
-	$("#enemies").append($("#chewbacca"));
-	$("#enemies").append($("#han-solo"));
-	$("#enemies").append($("#hutt"));
-	$("#enemies").css({"display": "inline"});
-	$("#player").css({"display": "inline"});
-	}); 
+		$('.individual').not(this).prepend("<h3>Enemy</h3>");
+		$('.individual').not(this).css({"background-color": "red"});
 
-$("#hutt").click( function() {
-	$("#player").append($("#hutt"));
-	$("#enemies").append($("#chewbacca"));
-	$("#enemies").append($("#han-solo"));
-	$("#enemies").append($("#vadar"));
-	$("#enemies").css({"display": "inline"});
-	$("#player").css({"display": "inline"});
-	}); 
+		$("#instructions").html("Click a character to battle.");
+		$(this).off(event);
+  	}
 
+  	else {
+  		$('.individual').click(function selectEnemy(event) {
+  			$(".game").append(this);
+  			$(this).off(event);
+  		});
+  	}
+
+  
+  ++clicks;
+});
+
+
+
+// }
+// choosePlayer();
+
+
+// $("button").click( function() {
+//  
+// });
+
+
+
+
+});
