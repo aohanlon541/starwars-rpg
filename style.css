@@ -67,8 +67,9 @@ h3 {
   width: 30%;
 }
 
-.game, #instructions {
+.game {
   margin: 0 auto;
+  
 }
 
 .subContainer {
