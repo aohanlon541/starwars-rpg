@@ -25,7 +25,7 @@ $('.individual').click(function() {
 		$(".individual").not(this).prepend("<h3>Enemy</h3>");
 		$(".individual").not(this).css({"background-color": "red"});
 
-		$("#instructions").html("Double click a character to battle.");
+		$("#instructions").html("<p>Double click a character to battle.</p>");
 		$(this).attr("class", "selectCharacter");
   	}
 
@@ -62,6 +62,7 @@ $('#attack').click(function () {
 		}
 		else {
 		$("#chewbaccaPoints").html("<p id='chewbaccaPoints'>DEAD</p>");
+
 		}
 	}
 
@@ -105,9 +106,9 @@ if (chewbaccaClasses.indexOf('selectEnemy') > -1) {
 		"</p>");
 		}
 		else {
-		$("#chewbaccaPoints").html("<p id='chewbaccaPoints'>DEAD</p>");
+		$("#chewbaccaPoints").html("<p id='chewbaccaPoints'>DEAD!</p>");
+		$("#instructions").html("<p>You defeated the enemy, select your next victim.</p>");
 		$("#chewbacca").css({"display": "none"});
-		alert("You defeated the enemy, select your next victim");
 		}
 	}
 
@@ -118,9 +119,10 @@ if (chewbaccaClasses.indexOf('selectEnemy') > -1) {
 		"</p>");
 		}
 		else {
-		$("#soloPoints").html("<p id='soloPoints'>DEAD</p>");
+		$("#soloPoints").html("<p id='soloPoints'>DEAD!</p>");
+				$("#instructions").html("<p>You defeated the enemy, select your next victim.</p>");
+
 		$("#hanSolo").css({"display": "none"});
-		alert("You defeated the enemy, select your next victim");
 		}
 	}	
 
@@ -131,9 +133,8 @@ if (chewbaccaClasses.indexOf('selectEnemy') > -1) {
 		"</p>");
 		}
 		else {
-		$("#vadarPoints").html("<p id='vadarPoints'>DEAD</p>");
+		$("#vadarPoints").html("<p id='vadarPoints'>DEAD! You defeated an enemy, select your next victim</p>");
 		$("#vadar").css({"display": "none"});
-		alert("You defeated an enemy, select your next victim");
 		}
 	}
 
@@ -144,9 +145,8 @@ if (chewbaccaClasses.indexOf('selectEnemy') > -1) {
 		"</p>");
 		}
 		else {
-		$("#huttPoints").html("<p id='huttPoints'>DEAD</p>");
+		$("#huttPoints").html("<p id='huttPoints'>DEAD! You defeated an enemy, select your next victim</p>");
 		$("#hutt").css({"display": "none"});
-		alert("You defeated an enemy, select your next victim");
 		}
 	}
 });		
