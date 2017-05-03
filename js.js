@@ -1,40 +1,39 @@
 $(document).ready(function() {
 
-var chewbaccaPoints = 100;
-var soloPoints = 150;
-var vadarPoints = 300;
-var huttPoints = 75; 
+var points = {Chewbacca: 100,
+			  Solo: 150,
+			  Vadar: 300,
+			  Hutt: 75};
+
 var clicks = 0;
 
-$("#chewbacca").append("<p id='chewbaccaPoints'>Health Points: " + chewbaccaPoints + 
+$("#chewbacca").append("<p id='chewbaccaPoints'>Health Points: " + points.Chewbacca + 
 	"</p>");
-$("#han-solo").append("<p>Health Points: " + soloPoints + 
+$("#hanSolo").append("<p id='soloPoints'>Health Points: " + points.Solo + 
 	"</p>");	
-$("#vadar").append("<p>Health Points: " + vadarPoints + 
+$("#vadar").append("<p id='vadarPoints'>Health Points: " + points.Vadar + 
 	"</p>");	
-$("#hutt").append("<p>Health Points: " + huttPoints + 
+$("#hutt").append("<p id='huttPoints'>Health Points: " + points.Hutt + 
 	"</p>");	
 
-$('.individual').click(function selectCharacter(event1) {
+$('.individual').click(function() {
 	if (clicks === 0) {
   		$(this).prepend("<h3>Selected Player</h3>");
 		$(this).css({"background-color": "green"})
 		$(".game").append(this);
-		$(this).attr("id", "selectCharacter");
 
-		$('.individual').not(this).prepend("<h3>Enemy</h3>");
-		$('.individual').not(this).css({"background-color": "red"});
+		$(".individual").not(this).prepend("<h3>Enemy</h3>");
+		$(".individual").not(this).css({"background-color": "red"});
 
 		$("#instructions").html("Double click a character to battle.");
 		$(this).attr("class", "selectCharacter");
-		$(this).off(event1);
   	}
 
   	else {
-  		$('.individual').click(function selectEnemy(event2) {
+  		$('.individual').click(function() {
   			$(".game").append(this);
   			$(this).attr("class", "selectEnemy");
-  			$(this).off(event2);
+
   		});
   	}
   ++clicks;
@@ -45,31 +44,113 @@ $('.individual').click(function selectCharacter(event1) {
 //use multiple to make one of the characers multiply every time that the attack button is pushed
 // if (chewbaccaPoints > 0) {
 
+var clickCount = 0;
+
 $('#attack').click(function () {
-		if (chewbaccaPoints > 0) {
-		chewbaccaPoints = chewbaccaPoints - 10;
-		$("#soloPoints").html("<p id='soloPoints'>Health Points: " + chewbaccaPoints + 
+	var chewbaccaClasses = document.getElementById('chewbacca').className.split(/\s+/);
+	var hanSoloClasses = document.getElementById('hanSolo').className.split(/\s+/);
+	var vadarClasses = document.getElementById('vadar').className.split(/\s+/);
+	var huttClasses = document.getElementById('hutt').className.split(/\s+/);
+
+	clickCount++;
+//select character 	
+	if (chewbaccaClasses.indexOf('selectCharacter') > -1) {
+		if (points.Chewbacca > 0) {
+		points.Chewbacca = points.Chewbacca - 10;
+		$("#chewbaccaPoints").html("<p id='chewbaccaPoints'>Health Points: " + points.Chewbacca + 
 		"</p>");
 		}
 		else {
 		$("#chewbaccaPoints").html("<p id='chewbaccaPoints'>DEAD</p>");
 		}
+	}
+
+	if (hanSoloClasses.indexOf('selectCharacter') > -1) {
+		if (points.Solo > 0) {
+		points.Solo = points.Solo - 10;
+		$("#soloPoints").html("<p id='soloPoints'>Health Points: " + points.Solo + 
+		"</p>");
+		}
+		else {
+		$("#soloPoints").html("<p id='soloPoints'>DEAD</p>");
+		}
+	}	
+
+	if (vadarClasses.indexOf('selectCharacter') > -1) {
+		if (points.Vadar > 0) {
+		points.Vadar = points.Vadar - 10;
+		$("#vadarPoints").html("<p id='vadarPoints'>Health Points: " + points.Vadar + 
+		"</p>");
+		}
+		else {
+		$("#vadarPoints").html("<p id='vadarPoints'>DEAD</p>");
+		}
+	}
+
+	if (huttClasses.indexOf('selectCharacter') > -1) {
+		if (points.Hutt > 0) {
+		points.Hutt = points.Hutt - 10;
+		$("#huttPoints").html("<p id='huttPoints'>Health Points: " + points.Hutt + 
+		"</p>");
+		}
+		else {
+		$("#huttPoints").html("<p id='huttPoints'>DEAD</p>");
+		}
+	}
+//select enemy 
+if (chewbaccaClasses.indexOf('selectEnemy') > -1) {
+		if (points.Chewbacca > 0) {
+		points.Chewbacca = points.Chewbacca - (10 * clickCount);
+		$("#chewbaccaPoints").html("<p id='chewbaccaPoints'>Health Points: " + points.Chewbacca + 
+		"</p>");
+		}
+		else {
+		$("#chewbaccaPoints").html("<p id='chewbaccaPoints'>DEAD</p>");
+		$("#chewbacca").css({"display": "none"});
+		alert("You defeated the enemy, select your next victim");
+		}
+	}
+
+	if (hanSoloClasses.indexOf('selectEnemy') > -1) {
+		if (points.Solo > 0) {
+		points.Solo = points.Solo - (10 * clickCount);
+		$("#soloPoints").html("<p id='soloPoints'>Health Points: " + points.Solo + 
+		"</p>");
+		}
+		else {
+		$("#soloPoints").html("<p id='soloPoints'>DEAD</p>");
+		$("#hanSolo").css({"display": "none"});
+		alert("You defeated the enemy, select your next victim");
+		}
+	}	
+
+	if (vadarClasses.indexOf('selectEnemy') > -1) {
+		if (points.Vadar > 0) {
+		points.Vadar = points.Vadar - (10 * clickCount);
+		$("#vadarPoints").html("<p id='vadarPoints'>Health Points: " + points.Vadar + 
+		"</p>");
+		}
+		else {
+		$("#vadarPoints").html("<p id='vadarPoints'>DEAD</p>");
+		$("#vadar").css({"display": "none"});
+		alert("You defeated an enemy, select your next victim");
+		}
+	}
+
+	if (huttClasses.indexOf('selectEnemy') > -1) {
+		if (points.Hutt > 0) {
+		points.Hutt = points.Hutt - (10 * clickCount);
+		$("#huttPoints").html("<p id='huttPoints'>Health Points: " + points.Hutt + 
+		"</p>");
+		}
+		else {
+		$("#huttPoints").html("<p id='huttPoints'>DEAD</p>");
+		$("#hutt").css({"display": "none"});
+		alert("You defeated an enemy, select your next victim");
+		}
+	}
 });		
 
-	// else if (character = $("#han-solo")) {
-	// 	if (soloPoints > 0) {
-	// 	soloPoints = soloPoints - 10;
-	// 	$("#soloPoints").html("<p id='soloPoints'>Health Points: " + soloPoints + 
-	// 	"</p>");
-	// 	else {
-	// 	$("#soloPoints").html("<p id='soloPoints'>DEAD</p>");
-	// 	}	
-	
-
-// }
-// else if (chewbaccaPoints = 0) {
-// 	$("#chewbaccaPoints").html("<p id='chewbaccaPoints'>DEAD</p>");
-// }
 
 //make it so it says "you're out of tries refresh"
 //fade out an "enemy" when you defeat them
