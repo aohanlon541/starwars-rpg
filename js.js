@@ -19,25 +19,30 @@ $("#hutt").append("<p id='huttPoints'>Health Points: " + points.Hutt +
 $('.individual').click(function() {
 	if (clicks === 0) {
   		$(this).prepend("<h3>Selected Player</h3>");
-		$(this).css({"background-color": "green"})
-		$(".game").append(this);
 
 		$(".individual").not(this).prepend("<h3>Enemy</h3>");
-		$(".individual").not(this).css({"background-color": "red"});
+		// $(".individual").not(this).css({"background-color": "red"});
 
 		$("#instructions").html("<p>Double click a character to battle.</p>");
 		$(this).attr("class", "selectCharacter");
-  	}
 
+		 $(".selectCharacter").css({"background-color": "green"});
+
+
+		$(this).animate({ "marginTop" : "+=15em", "marginRight" : "+=5em"});
+  	}
   	else {
   		$('.individual').click(function() {
   			$(".game").append(this);
   			$(this).attr("class", "selectEnemy");
 
+  			$(".selectEnemy").css({"background-color": "red"});
   		});
   	}
+
   ++clicks;
 });
+
 
 
 //subtract points when the attack button is pushed on the selectCharacter and selectEnemy 
