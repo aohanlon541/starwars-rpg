@@ -4,12 +4,11 @@
 	<title>Star Wars RPG</title>
 	<meta charset="UTF-8">
 	  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
-	  <link rel="stylesheet" href="css/app.css">
+	  <link rel="stylesheet" href="foundation/css/foundation.css">
 	  <link href="style.css" rel="stylesheet" type="text/css">
-  	  <script src="js/vendor/modernizr.js"></script>
-	  <link rel="stylesheet" href="css/app.css">
-	  <script src="js/vendor/modernizr.js"></script>
-	  <link href="https://fonts.googleapis.com/css?family=Raleway:100,400" rel="stylesheet">
+	  <link rel="stylesheet" href="foundation/css/app.css">
+	  <script src="foundation/js/vendor/modernizr.js"></script>
+	  <link href="https://fonts.googleapis.com/css?family=Raleway:200,400" rel="stylesheet">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 </head>
 <body>
@@ -23,17 +22,16 @@
 	<div id="instructions">
 	<p>Click a character to be your player!</p>
 	</div>
-			<div class="subContainer">
-
-		<div class="game row">
-			
-			<button id="attack">Attack!</button>
-			
-		</div>
-
-		</div>
+	
+	<div id="buttonContainer">	
+		<button class="round button alert" id="attack">Attack!</button>
+	</div>	
 
 	<div class="container">
+	
+
+	<div class="game row"></div>
+
 		<div class="characters row">
 
 			<div class="individual" id="chewbacca">
@@ -52,6 +50,8 @@
 				<img src="http://s2.hubimg.com/u/4061493_f520.jpg" alt="hutt" class="photo">
 			</div>
 		</div>
+
+	<div id="otherEnemies"></div>
 		
 	
 	</div>

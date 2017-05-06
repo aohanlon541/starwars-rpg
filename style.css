@@ -22,11 +22,12 @@
 .hero-section .hero-section-text {
   color: #fefefe;
   text-shadow: 1px 1px 2px #0a0a0a;
+  max-width: 50em;
 }
 
 h1, h2, h3, h4, p, li {
   font-family: 'Raleway', sans-serif;
-  font-weight: 100;
+  font-weight: 200;
 }
 
 h2 {
@@ -39,10 +40,16 @@ h2 {
 h3 {
   background-color: black;
   color: white; 
-  width: 10em;
+  font-size: 1.2em;
+  width: 9.15em;
   padding: .5em;
   margin-top: .5em;
   text-align: center;
+}
+
+#loser, #winner {
+  text-align: center;
+  font-size: 5em;
 }
 
 #instructions {
@@ -75,17 +82,20 @@ h3 {
 
 .game {
   margin: 0 auto;
-  
 }
 
-.subContainer {
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-}
 
 .selectCharacter, .selectEnemy {
   height: 17em;
+  width: 11em;
+  float: left;
+  margin: 0 auto;
 }
 
+#buttonContainer  {
+  text-align: center;
+  }
 
+#chewbaccaPoints, #soloPoints, #vadarPoints, #huttPoints {
+  text-align: center;
+}
