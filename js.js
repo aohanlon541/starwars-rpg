@@ -49,7 +49,6 @@ $('.individual').click(function() {
 // if (chewbaccaPoints > 0) {
 
 var clickCount = 0;
-var dead = 0;
 
 $('#attack').click(function () {
 	var chewbaccaClasses = document.getElementById('chewbacca').className.split(/\s+/);
@@ -57,9 +56,6 @@ $('#attack').click(function () {
 	var vadarClasses = document.getElementById('vadar').className.split(/\s+/);
 	var huttClasses = document.getElementById('hutt').className.split(/\s+/);
 
-	var addDead = function addDead() {
-		return dead++;
-	};
 
 	clickCount++;
 //select character 	
@@ -118,13 +114,9 @@ if (chewbaccaClasses.indexOf('selectEnemy') > -1) {
 		"</p>");
 		}
 		else {
-		$("#chewbaccaPoints").html("<p id='chewbaccaPoints'>DEAD!</p>");
 		$("#instructions").html("<p>You defeated the enemy, select your next victim.</p>");
 		
-		$("#chewbaccaClasses").css({"opacity": "0.5"});
-		addDead();
-		console.log(dead);
-		addDead().stop()
+		$("#chewbacca").css({"opacity": "0.5"});
 		}
 	}
 
@@ -135,13 +127,9 @@ if (hanSoloClasses.indexOf('selectEnemy') > -1) {
 		"</p>");
 		}
 		else {
-		$("#soloPoints").html("<p id='soloPoints'>DEAD!</p>");
-				$("#instructions").html("<p>You defeated the enemy, select your next victim.</p>");
+		$("#instructions").html("<p>You defeated the enemy, select your next victim.</p>");
 
 		$("#hanSolo").css({"opacity": "0.5"});
-		addDead();
-		console.log(dead);
-		addDead().stop()
 		}
 	}	
 
@@ -152,11 +140,8 @@ if (vadarClasses.indexOf('selectEnemy') > -1) {
 		"</p>");
 		}
 		else {
-		$("#vadarPoints").html("<p id='vadarPoints'>DEAD! You defeated an enemy, select your next victim</p>");
+		$("#instructions").html("<p>You defeated the enemy, select your next victim.</p>");
 		$("#vadar").css({"opacity": "0.5"});
-		addDead();
-		console.log(dead);
-		addDead().stop()
 		}
 	}
 
@@ -167,22 +152,19 @@ if (huttClasses.indexOf('selectEnemy') > -1) {
 		"</p>");
 		}
 		else {
-		$("#huttPoints").html("<p id='huttPoints'>DEAD! You defeated an enemy, select your next victim</p>");
+		$("#instructions").html("<p>You defeated the enemy, select your next victim.</p>");
 		$("#hutt").css({"opacity": "0.5"});
-		addDead();
-		console.log(dead);
-		addDead().stop()
 		}
 	}
 
-if (dead === 6) {
-	$(".container").html("<p id='winner'>You won! Party time</p>");
-	}
+//i can't figure out how to make it tell you win. I put a deadCount before and did deadCount++ 
+//else functions when the selectedEnemy = 0, but it kept compounding after the first enemy was 
+//dead. 
+
 });		
 
 
 
-console.log(dead);
 
 
 });
